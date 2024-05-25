@@ -3,11 +3,37 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import {
+  CategoryProvider,
+  DateProvider,
+  FilterProvider,
+  AuthProvider,
+  WishlistProvider,
+  HotelProvider,
+  AlertProvider
+} from "./context";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <CategoryProvider>
+        <DateProvider>
+          <FilterProvider>
+            <AuthProvider>
+              <WishlistProvider>
+                <HotelProvider>
+                  <AlertProvider>
+                    <App />
+                  </AlertProvider>
+                </HotelProvider>
+              </WishlistProvider>
+            </AuthProvider>
+          </FilterProvider>
+        </DateProvider>
+      </CategoryProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
