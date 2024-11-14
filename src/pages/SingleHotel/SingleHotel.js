@@ -14,6 +14,8 @@ import {
 } from "../../components";
 import "./SingleHotel.css";
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 export const SingleHotel = () => {
   const { id } = useParams();
   const [singleHotel, setSingleHotel] = useState({});
@@ -26,7 +28,7 @@ export const SingleHotel = () => {
     (async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3500/api/hotels/${id}`
+          `${backendUrl}/api/hotels/${id}`
         );
         setSingleHotel(data);
       } catch (err) {

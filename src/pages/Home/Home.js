@@ -20,6 +20,8 @@ import {
   getHotelsByCancelation,
 } from "../../utils";
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 export const Home = () => {
   const [hasMore, setHasMore] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(16);
@@ -45,7 +47,7 @@ export const Home = () => {
     (async () => {
       try {
         console.log('Fetching hotels with category:');
-        const response = await fetch("http://localhost:3500/api/hotels");
+        const response = await fetch(`${backendUrl}/api/hotels`);
         const data = await response.json();
         console.log('Data fetched:', data);
 

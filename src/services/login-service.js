@@ -1,11 +1,12 @@
 import axios from "axios";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 export const loginHandler = async(number, password, setAlert) => {
     try{
         const{
             data: {accessToken, username},
         } = await axios.post(
-            "http://localhost:3500/api/auth/login",{
+            `${backendUrl}/api/auth/login`,{
                 number: number,
                 password: password,
             }
