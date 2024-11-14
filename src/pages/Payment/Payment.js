@@ -5,6 +5,8 @@ import { v4 as uuid } from "uuid";
 import axios from "axios";
 import "./Payment.css";
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 export const Payment = () => {
   const params = useParams();
   const { id } = params;
@@ -26,7 +28,7 @@ export const Payment = () => {
     (async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3500/api/hotels/${id}`
+          `${backendUrl}/api/hotels/${id}`
         );
         setSingleHotel(data);
       } catch (err) {

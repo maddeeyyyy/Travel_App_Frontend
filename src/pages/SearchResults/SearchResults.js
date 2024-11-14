@@ -3,6 +3,8 @@ import { HotelCard, Navbar, Alert } from "../../components";
 import { useDate, useCategory, useAlert } from "../../context";
 import axios from "axios";
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 export const SearchResults = () => {
   const { destination } = useDate();
   const { hotelCategory } = useCategory();
@@ -13,7 +15,7 @@ export const SearchResults = () => {
     (async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3500/api/hotels?category=${hotelCategory}`
+          `${backendUrl}/api/hotels?category=${hotelCategory}`
         );
         setHotels(data);
       } catch (err) {
